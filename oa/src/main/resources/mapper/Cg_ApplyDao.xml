@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.oa.dao.Cg_ApplyDao">
+
+	<!-- 查询所有资产采购申请信息 -->
+
+
+	<select resultType="Cg_Apply" id="findAll">select * from cg_apply </select>
+
+	<!-- 根据采购编号查询采购申请信息 -->
+
+
+	<select resultType="Cg_Apply" id="findById">select * from cg_apply
+		wherepid=#{pid}
+	</select>
+
+	<!-- 根据库存编号查询采购申请信息 -->
+
+
+	<select resultType="Cg_Apply" id="findByCg_ApplyId">select * from cg_applywhere
+		iid=#{iid}
+	</select>
+
+	<!-- 增加一个资产采购申请表 -->
+
+
+	<insert id="add">insert into cg_apply
+		(iid,sta_id,c_number,pdate,uid)values(#{iid},#{sta_id},#{c_number},#{pdate},#{uid})
+	</insert>
+
+	<!-- 根据库存编号删除资产采购申请表 -->
+
+
+	<delete id="delete">delete from cg_apply where iid=#{iid} </delete>
+
+	<!-- 根据采购编号删除资产采购申请表 -->
+
+
+	<delete id="deleteByID">delete from cg_apply where pid=#{pid} </delete>
+
+	<!-- 根据员工id删除员工资产采购申请信息 -->
+
+
+	<delete id="deleteEmp">delete from cg_apply where uid=#{uid} </delete>
+
+	<!-- 更新资产采购申请信息 -->
+
+
+	<update id="update">update cg_apply set sta_id=#{sta_id},
+		c_number=#{c_number} where pid=#{pid}
+	</update>
+
+</mapper>
